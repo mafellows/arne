@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arne Esbin | Jackson Bell</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="en" />
+
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-46435914-1', 'jbradios.com');
+      ga('send', 'pageview');
+
+
+      // grab the random song...
+      function playSound() {
+        var randomSongs = new Array(); 
+        randomSongs[0] = "Music/Route66.mp3"; 
+        randomSongs[1] = "Music/Thrill_is_gone.mp3"; 
+        randomSongs[2] = "Music/TakeThatAway.mp3"; 
+        randomSongs[3] = "Music/NearnessOfYou.mp3";
+        randomSongs[4] = "Music/MuchAnymore.mp3"; 
+
+        var randomNumber = Math.floor(Math.random() * 5); 
+
+        var soundfile = randomSongs[randomNumber]; 
+
+        document.getElementById("dummy").innerHTML=
+        "<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
+      }       
+
+      function testPlaySound(el) {
+        changeImage(); 
+
+        var randomSongs = new Array(); 
+        randomSongs[0] = "Music/Route66.mp3"; 
+        randomSongs[1] = "Music/Thrill_is_gone.mp3"; 
+        randomSongs[2] = "Music/TakeThatAway.mp3"; 
+        randomSongs[3] = "Music/NearnessOfYou.mp3";
+        randomSongs[4] = "Music/MuchAnymore.mp3"; 
+
+        var randomNumber = Math.floor(Math.random() * 5); 
+
+        var soundfile = randomSongs[randomNumber]; 
+
+        if (el.mp3) {
+          if (el.mp3.paused) el.mp3.play();
+          else el.mp3.pause(); 
+        } else {
+          el.mp3 = new Audio(soundfile); 
+          el.mp3.play(); 
+        }
+      }
+
+      n = 0; 
+      function changeImage() {
+        if (n == 0) {
+          n = 1;
+          document.getElementById("play").src = "img/pause-circle.png"; 
+          console.log(n); 
+        } else {
+          n = 0; 
+          document.getElementById("play").src = "img/play-circle.png";  
+        }
+      }
+    </script>
+
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      body {
+        background-image:url('img/pixel_weave.png');
+      }
+
+      h1 { 
+        font-size: 64px; 
+        margin-top: 30px; 
+        margin-bottom: 30px; 
+      }
+      h3 { color: #e67e22; }
+      p { 
+        margin-left: 30px;
+        margin-right: 30px; 
+        font-size: 16px; 
+        font-weight: 300; 
+       }
+
+      a {
+        color: #e67e22; 
+      }
+
+      a:hover {
+        color: #e67e22; 
+        text-decoration: none; 
+      }
+
+      #main {
+        background-color: white; 
+      }
+
+      .audio-controls {
+        margin-left: auto; 
+        margin-right: auto; 
+        position:absolute; 
+      }
+
+      .audio-controls ul {
+        list-style-type: none; 
+        margin-top: 30px; 
+      }
+
+      .audio-controls ul li {
+        margin-top: 10px; 
+      }
+
+      .featured {
+        margin-right: 20px;
+        width: 95%; 
+        height: 600px;  
+        display: block;
+        margin-right: auto; 
+        margin-left: auto; 
+        margin-top: 30px; 
+        margin-bottom: 60px; 
+      }
+
+      .menu {
+        color: #7f8c8d; 
+        font-size: 22px; 
+      }
+
+      .story {
+        margin-top: 30px;
+        margin-bottom: 60px; 
+      }
+
+      .quote {
+        font-size: 22px; 
+        margin-left: 50px; 
+      }
+
+      .thanks {
+        margin-left: 30px; 
+        margin-right: 30px; 
+        margin-top: -50px; 
+        font-size: 16px;
+        font-weight: 300;  
+      }
+
+      .thanks-list {
+        margin-left: 50px; 
+      }
+
+      .turquoise { background: #1abc9c; }
+      .emerland { background: #2ecc71; }
+      .peterriver { background: #3498db; }
+      .amethyst { background: #9b59b6; }
+      .wetasphalt { color: #34495e; }
+      .greensea { background: #16a085; }
+      .nephritis { background: #27ae60; }
+      .belizehole { background: #2980b9; }
+      .wisteria { background: #8e44ad; }
+      .midnightblue { background: #2c3e50; }
+      .sunflower { background: #f1c40f; }
+      .carrot { background: #e67e22; }
+      .alizarin { background: #e74c3c; }
+      .clouds { background: #ecf0f1; color: #999; }
+      .concrete { background: #95a5a6; }
+      .orange { background: #f39c12; }
+      .pumpkin { color: #d35400; }
+      .pomegranate { background: #c0392b; }
+      .silver { background: #bdc3c7; }
+      .asbestos { background: #7f8c8d; }
+
+      .asbestosText { color:#7f8c8d;}
+      .carrotText { color:#e67e22; }
+      .wetasphaltText { color:  #34495e; }
+      .alizarinText { color:#e74c3c; }
+
+    </style>
+  </head>
+  <body class="carrot" onload="testPlaySound(play);">
+    <span id="dummy"></span>
+    <div class="audio-controls">
+      <ul>
+        <li><img id="play" onclick="testPlaySound(this);" class="audio-image" src="img/play-circle.png"></li>
+      </ul>
+    </div>
+    
+    <div id="soundtrack"class="container" style="margin-top:30px; margin-bottom: 30px;">
+      <div id="main" class="span12">
+
+        <h1 class="text-center carrotText">Jackson Bell</h1>
+          <ul #id="nav" class="inline text-center menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#story">Story</a></li>
+            <li><a href="#family">Family</a></li>
+            <li><a href="#gilfillan">Gilfillan</a></li>
+            <li><a href="gallery.html">Gallery</a></li> 
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+
+
+          <hr>
+
+
+         <!--  <ul class="inline test-center menu">
+            <li><a href="#" onclick="testPlaySound(this, 'Music/Thrill_is_gone.mp3');">Thrill is gone</a></li>
+            <li><a href="#" onclick="testPlaySound(this, 'Music/Route66.mp3');">Route 66</a></li>
+            <li><a href="#" onclick="testPlaySound(this, 'Music/TakeThatAway.mp3');">Take that Away</a></li>
+            <li><a href="#" onclick="testPlaySound(this, 'Music/NearnessOfYou.mp3');">Nearness of You</a></li>
+            <li><a href="#" onclick="testPlaySound(this, 'Music/MuchAnymore.mp3');">Don't Get Around Much Anymore</a></li>
+          </ul> -->
+
+          <img class="img-rounded featured" src="img/factory.png">
+
+            <p class="quote">&#34;I could tell my parents hated me. My bath toys were a toaster and a radio.&#34;</p>
+            <p class="quote carrotText">-Rodney Dangerfield </p>
+            <br>
+            <br>
+
+          <h1 class="text-center carrotText"><a id="story">The Story</a></h1>
+
+          <p class="story">The Jackson Bell radio company was established in Los Angeles in 1926. The company factory was relocated several times within the same general area, but usually within &#34;hailing&#34; distance to Gilfillan Brothers. The RCA chassis for Jackson Bell sets were assembled and installed within the Gifillan Brothers factory.  Gilfillan Brothers held the license agreement with RCA and Jackson Bell as well as a number of other lesser-known radio manufacturers that did the same thing.
+          <br>
+          <br>
+          Jackson Bell became well known for their &#34;Midget&#34; and &#34;Pee Wee&#34; sized cathedrals.  The cabinets are/were exceptionally well made, light weight and extremely durable.  At least 2 of the Bell brothers 
+          and father were involved with the cabinet making end of the business.  
+          <br>
+          <br>
+          Jackson Bell offered a full line of radios, mantle radios, table top, console and even tried the radio in the grandfather clock.  I have seen pictures of 2 or 3 Jackson Bell radios that were especially designed for the 1932 Olympics held in Los Angeles that year.
+          <br>
+          <br>
+          Jackson Bell was especially well known for their fanciful cut wood grills, Their &#34;Peter Pan&#34;, &#34;Tulips&#34;, &#34;Swan&#34;, &#34;Sun Rise&#34; models were hugely popular with the public on the West Coast in 1930-1932.  They helped establish Los Angeles as &#34;The Midget Radio Capital of the World&#34;. 
+          <br>
+          <br>
+          The end came officially in 1935, however they actually stopped building radios earlier then that; probable in 1933 and right in the middle of the Depression.  The company is said to have purchased way too many parts for an older technology (TRF) and then ran into financial problems.
+          <br>
+          <br>
+          Herbert Bell shortly reappears as partners with Leon S. Packard and they formed Packard-Bell.  Many of the early Packard-Bell radios have a very similar look and design as the final Jackson Bell models and even a few Gifillan design features.  Obviously some of designers and engineers worked for more than one of these companies.</p>
+
+        <!-- First row of radios - The correct way they are to be displayed. --> 
+        <div class="row">
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/first-nine/Fan_330h.png" align="middle">
+            </center>
+            <h3 class="text-center"><u>Fan</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/first-nine/fleur_de_lis_330h.png">
+            </center>
+            <h3 class="text-center"><u>Fleur De Lis</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/first-nine/Mellotone_330h.png">
+            </center>
+            <h3 class="text-center"><u>Mellotone</u></h3>
+          </div>
+        </div>
+
+        <!-- Second row of radios - The correct way they are to be displayed. --> 
+        <div class="row">
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/first-nine/Peacock_330h.png" align="middle">
+            </center>
+            <h3 class="text-center"><u>Peacock</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/first-nine/Peter_Pan_330h.png">
+            </center>
+            <h3 class="text-center"><u>Peter Pan</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/first-nine/Sunburst_330h.png">
+            </center>
+            <h3 class="text-center"><u>Sunburst</u></h3>
+          </div>
+        </div>
+
+        <!-- Third row of radios - The correct way they are to be displayed. --> 
+        <div class="row">
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/first-nine/swan_330h.png">
+            </center>
+            <h3 class="text-center"><u>Swan</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/first-nine/Sunrise_330h.png" align="middle">
+            </center>
+            <h3 class="text-center"><u>Sunrise</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/first-nine/Tulip_330h.png" >
+            </center>
+            <h3 class="text-center"><u>Tulip</u></h3>
+          </div>
+        </div>
+        <br /> 
+        <HR>  
+
+        <!-- Begin The Family paragraph --> 
+        <h1 class="text-center carrotText"><a id="family">The Family</a></h1>
+
+        <p class="story">Herbert, Arther, Albert, Willard and Elmer were the sons of Anton Zwiebel Jr.  Their grandfather, Anton Sr. emigrated from St. Jean-Saverne, Alsace France at the age of 16. 
+        <br>
+        <br> 
+        He became a very successful businessman, owning machine shops and auto garages in Burlington, Wisconsin. Anton also was an inventor, and had received four or five patents during his life. 
+        <br>
+        <br>
+        Herbert and Albert started working in radio electronics around 1928 in their father’s garage. They had formed a company which did not survive.  However, around 1929, Herbert would form a partnership with Mr.Jackson, naming the company Jackson-Bell Corp., making radios. Herbert, Albert and Willard changed their name to Bell after moving from Wisconsin to California.
+        <br>
+        <br>
+        Apparently Elmer was the cabinet-maker for the radio company owned by his brother Herbert. Elmer's other brothers, Willard and Albert worked for the company as did their father Anton. At some point Elmer left the company, and around 1952, retired from selling building material and trailer homes in the Newport area of LA.
+        <br>
+        <br>
+        In 1933 Herb.Bell formed a partnership to establish Packard-Bell, also making radios. Obviously Herbert’s other brothers worked for the company as well. The company became involved with Military Electronics, and did well through WWII. Sometime after the war, Herbert’s brothers left the company. Herbert continued to run the company and took it public in the 1950's and remained it's president until 1956, them became chairman of the Board of Directors. 
+        <br>
+        <br>
+        When Jackson-Bell went into receivership in spring/summer 1933, an order by the referee caused the name J-B not to be used for a silver mirror model being made formerly for J-B, and then continued by that (yet unknown) manufacturer even during (and perhaps after) the J-B receivership. We can assume that after the receivership was closed, the name J-B was free and was revived for use in 1936 for a few radio models by that background maker.
+        <br>
+        <br>
+        <i>Edited from an article at Radio Museum.</i></p>
+
+
+        <!-- End the Family paragraph -->
+
+        <!-- First row of radios - The correct way they are to be displayed. --> 
+        <div class="row">
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/second-nine/swan-1_330h.png">
+            </center>
+            <h3 class="text-center"><u>Swan</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/second-nine/olympic_330h.png">
+            </center>
+            <h3 class="text-center"><u>Olympic</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/second-nine/PeterPan_330h.png">
+            </center>
+            <h3 class="text-center"><u>Peter Pan</u></h3>
+          </div>
+        </div>
+
+        <!-- Second row of radios - The correct way they are to be displayed. --> 
+        <div class="row">
+          <!-- Arne sending better picture... --> 
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/second-nine/peter_pan_new.png" align="middle">
+            </center>
+            <h3 class="text-center"><u>Peter Pan</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/second-nine/PeterPan-3_330h.png">
+            </center>
+            <h3 class="text-center"><u>Peter Pan</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/second-nine/tulip_330h.png">
+            </center>
+            <h3 class="text-center"><u>Tulip</u></h3>
+          </div>
+        </div>
+
+        <!-- Third row of radios - The correct way they are to be displayed. --> 
+        <div class="row">
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/second-nine/swan-2_330h.png" align="middle">
+            </center>
+            <h3 class="text-center"><u>Swan</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/second-nine/swan-3_330h.png">
+            </center>
+            <h3 class="text-center"><u>Swan Chassis</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/second-nine/fan_330h.png" align="middle">
+            </center>
+            <h3 class="text-center"><u>Fan</u></h3>
+          </div>
+
+          
+        </div>
+        <br /> 
+        <HR>  
+
+
+        <!-- Begin the Gilfillan Brothers --> 
+        <h1 class="text-center carrotText"><a id="gilfillan">Gilfillan Brothers</a></h1>
+
+        <p class="story"> 
+        The story of the Gilfillan Brothers is an interesting one and worth summarizing because virtually every west coast radio manufacturer in the 1920’s and 30’s had some type of relationship with Gilfillan Brothers.<br>
+        <br>
+        The older of the two brothers, Sennett graduated from Stanford in 1912 and purchased the assets of his uncle’s smelting and refining business in Los Angeles.  Shortly later, Sennett invited his younger brother Jay to join him as a partner.  The company refined gold and platinum and sold their products to dentists and jewelers. 
+        <br>
+        <br>
+        Within a few years it became apparent that the automobile business had vast potential and the Gilfillan brothers started production of automotive ignition parts.  In their search for a suitable material for distributor covers, the brothers recognized the feasibility of a moldable plastic compound invented by the Belgium scientist, Dr. Baekeland.  The automotive product line then expanded to include distributor caps and blocks, contacts, magneto brushes and points, electrical tools, storage battery terminal clamps, taps and dies, wrench kits and generator brushes.
+        <br>
+        <br>
+        1921 marked the year that Gilfillan entered the radio industry offering radio parts to amateur radio operators and wireless enthusiasts.  Gilfillan Brothers built its first radios using a license from Hazeltine as part of the Independent Radio Manufacturers (IRC) to avoid RCA’s stranglehold on radio design patents. In 1927 RCA sued several members of the IRC, claiming that the Hazeltine design infringed on RCA’s neutralization patents, and the courts agreed. After lobbying RCA for a costly license, they received territorial rights to the RCA patents. By working with RCA, and licensing other west-coast radio manufacturers, Gilfillan was able to defray some of the licensing costs (and royalty payments to RCA).
+        <br ><br />
+        <i>Chassis were produced not only for Jackson Bell, but also for a number of other contracting companies:   
+        <br /><br />
+        Advance Electric (Falck)  - Breting  - Cardinal Radio  - Davison-Haynes -(Angeles) for Montgomery Ward  - Echophone  - Flint  - Golden Bear Herbert Horn - Tiffany Tone - Keller-Fuller  - Kemper  - Packard-Bell  - Patterson  - Pierson De Lane  - Shelley (Peter Pan)  - Troy 
+        </i> 
+        </p>
+
+
+
+        <!-- End Gilfillan Brothers -->  
+
+        <!-- First row of radios - The correct way they are to be displayed. --> 
+        <div class="row">
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/third-eleven/Echophone_330h.png" align="middle">
+            </center>
+            <h3 class="text-center"><u>Echophone</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/third-eleven/falck_330h.png">
+            </center>
+            <h3 class="text-center"><u>Falck</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/third-eleven/gilfillan_330h.png">
+            </center>
+            <h3 class="text-center"><u>Gilfillan</u></h3>
+          </div>
+        </div>
+
+        <!-- Second row of radios - The correct way they are to be displayed. --> 
+        <div class="row">
+          <div class="span4">            
+            <center>
+              <img class="img-rounded" src="img/third-eleven/Willard_330h.png" align="middle">
+            </center>
+            <h3 class="text-center"><u>Willard</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/third-eleven/KellerFuller_330h.png">
+            </center>
+            <h3 class="text-center"><u>Keller Fuller</u></h3>
+          </div>
+
+          <div class="span4">
+            <center>
+              <img class="img-rounded" src="img/third-eleven/Lark_330h.png">
+            </center>
+            <h3 class="text-center"><u>Lark</u></h3>
+          </div>
+        </div>
+
+        <!-- Third row of radios - The correct way they are to be displayed. --> 
+        <div class="row">
+          <div class="span6">
+            <center>
+              <img class="img-rounded" src="img/third-eleven/golden-bear-250h.png" align="middle" style="margin-top:80px;">
+            </center>
+            <h3 class="text-center"><u>Golden Bear</u></h3>
+          </div>
+
+          <div class="span6">
+            <center>
+              <img class="img-rounded" src="img/third-eleven/Sunburst_330h.png">
+            </center>
+            <h3 class="text-center"><u>Tiffany Tone</u></h3>
+          </div>
+        </div>
+
+        <!-- Fourth row of radios - Only two in this section. --> 
+        <div class="row">
+          <div class="span6">
+            <center>
+              <img class="img-rounded" src="img/third-eleven/packard-bell-250h.png" align="middle">
+            </center>
+            <h3 class="text-center"><u>Packard Bell</u></h3>
+          </div>
+
+          <div class="span6">
+            <center>
+              <img class="img-rounded" src="img/third-eleven/packard-bell2-250h.png" align="middle">
+            </center>
+            <h3 class="text-center"><u>Packard Bell</u></h3>
+          </div>
+        </div>
+        <br /> 
+        <HR>  
+
+
+         <!-- Contact --> 
+        <div class="row">
+          <h1 class="text-center carrotText"><a id="contact">Contact</a></h1>
+          <p class="story" style="margin-left:50px;">
+            Thank you for visiting my site. Make sure you stop by <a href="gallery.html">the gallery</a> to check out my personal collections. If you have any questions about radios or my personal collection, <a href="mailto:esbin5@earthlink.net?Subject=Hey%20Arne,%20Let's%20Talk%20Radios" target="_top">click here to send me an email</a>. <br /><br /> Many thanks to:</p>
+            <ul class="thanks">
+              <li class="thanks-list"><b>Roger Lowary</b> - superb technician, better friend and a man who knows his way around a bagel</li> 
+              <li class="thanks-list"><b>Mike Simpson</b> - sold me my first and still favorite Jackson Bell radio</li>
+              <li class="thanks-list"><b>Ted Rogers</b> - true gentleman who was still purchasing radios the month before he passed away last year at age 92</li>
+              <li class="thanks-list"><b>Steve Adams</b> - – owner, operator and webmaster extraordinaire of The Radio Attic; he does an awesome job displaying and assisting us find new homes for our classic radios. I highly recommend that you check out all the wonderful radios at The Radio Attic because the members are conscientious, capable and care that you are getting a safe and reliable radio.<br /><br /> 
+              Click the link below to visit Arne Esbin's Radio Attic:<br />
+              <a href="http://radioattic.com/attic.htm?sellerId=118">Arne's Radio Attic</a></li><br /> 
+              <li class="thanks-list">Finally, but not least <a href="http://www.mafellows.com">Michael Fellows</a> of Broadway Lab, the creator of this web page. Visit his site below to see more samples of his work:<br /><a href="http://www.broadwaylab.com">Broadway Lab</a></li>
+            </ul>              
+            <br /> 
+            <br /> 
+            <br /> 
+        </div>  
+        <!-- End Contact --> 
+
+      <div>
+        <p>&copy;2013 Arne Esbin. All Rights Reserved.</p>
+      </div>
+
+     </div>
+    
+
+
+
+
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js">
+    
+
+    </script>
+  </body>
+</html>
